@@ -8,22 +8,23 @@ public class Juego {
 		Scanner sc = new Scanner(System.in);
 		
 		int numeroDeJugadores = 0;
-		String[] palabras = new String[1];// Crear un array con un solo espacio para la palabra a ingresar
+		String palabraSecreta;
+		String[] jugadores;
 		
 		System.out.println("*-------------------------------*");
 		System.out.println("|BIENVENIDO AL JUEGO DEL COLGADO|");
 		System.out.println("*-------------------------------*");
 		
-		// Pedir al usuario que ingrese una palabra
-		System.out.print("Por favor, ingresa la palabra para adivinar: ");
-		palabras[0] = sc.nextLine(); // Leer la palabra y guardarla en el array
+		// Pedir al usuario que ingrese la palabra
+        System.out.print("Por favor, ingresa la palabra para adivinar: ");
+        palabraSecreta = sc.nextLine().toLowerCase(); // Convertir la palabra a minúsculas para evitar problemas con mayúsculas
         
         // Preguntar cuántos jugadores van a jugar
         System.out.print("¿Cuántos jugadores van a jugar? ");
         numeroDeJugadores = sc.nextInt();  // Leer el número de jugadores
         
         // Crear un array con el número de jugadores
-        String[] jugadores = new String[numeroDeJugadores];
+        jugadores = new String[numeroDeJugadores];
         
         // Pedir el nombre de cada jugador
         for (int i = 0; i < jugadores.length; i++) {
@@ -33,7 +34,7 @@ public class Juego {
         
         
 		// Mostrar la palabra ingresada
-		System.out.println("La palabra secreta es: " + palabras[0]);
+		System.out.println("La palabra secreta es: " + palabraSecreta);
 		
 		
 	}
