@@ -23,6 +23,12 @@ public class Juego {
         System.out.print("¿Cuántos jugadores van a jugar? ");
         numeroDeJugadores = sc.nextInt();  // Leer el número de jugadores
         
+        if (numeroDeJugadores < 2) {
+        	System.out.println("ERROR --> El numero minimo de jugadores ha de ser dos");
+        	
+        } else {
+        	
+        
         // Crear un array con el número de jugadores
         jugadores = new String[numeroDeJugadores];
         
@@ -30,13 +36,12 @@ public class Juego {
         for (int i = 0; i < jugadores.length; i++) {
             System.out.print("Ingresa el nombre del jugador " + (i + 1) + ": ");
             jugadores[i] = sc.next();  // Leer el nombre del jugador y almacenarlo en el array
+           }
         }
         
         
 		// Mostrar la palabra ingresada
 		System.out.println("La palabra secreta es: " + palabraSecreta);
 		
-		
 	}
-
 }
