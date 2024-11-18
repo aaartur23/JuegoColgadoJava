@@ -8,12 +8,21 @@ public class Juego {
 		Scanner sc = new Scanner(System.in);
 		
 		int numeroDeJugadores = 0;
-		String palabraSecreta;
+		int option = 0;
+		String palabraSecreta = "";
 		String[] jugadores;
 		
 		System.out.println("*-------------------------------*");
 		System.out.println("|BIENVENIDO AL JUEGO DEL COLGADO|");
 		System.out.println("*-------------------------------*");
+		
+		do {
+		System.out.println("Vas a querer jugar? 1=si 2=no");
+		option = sc.nextInt();
+		sc.nextLine(); // Sacar el salto de linea por error
+		
+		if(option == 1) {
+			System.out.println("*EMPECEMOS*");
 		
 		// Pedir al usuario que ingrese la palabra
         System.out.print("Por favor, ingresa la palabra para adivinar: ");
@@ -37,11 +46,15 @@ public class Juego {
             System.out.print("Ingresa el nombre del jugador " + (i + 1) + ": ");
             jugadores[i] = sc.next();  // Leer el nombre del jugador y almacenarlo en el array
            }
+        // Mostrar la palabra ingresada
+        System.out.println("La palabra secreta es: " + palabraSecreta);
         }
+		} else {
+			System.out.println("Has salido correctamente");
+		}
+		} while (option != 2);
         
         
-		// Mostrar la palabra ingresada
-		System.out.println("La palabra secreta es: " + palabraSecreta);
 		
 	}
 }
