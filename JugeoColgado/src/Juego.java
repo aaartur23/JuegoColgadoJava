@@ -32,7 +32,8 @@ public class Juego {
                 // Pregunto cuántos jugadores van a jugar
                 System.out.print("¿Cuántos jugadores van a jugar? ");
                 numeroDeJugadores = sc.nextInt(); // Leer el número de jugadores
-
+                
+                //Verifico que al menos jueguen dos jugadores
                 if (numeroDeJugadores < 2) {
                     System.out.println("ERROR --> El numero mínimo de jugadores debe ser dos");
                 } else {
@@ -46,7 +47,7 @@ public class Juego {
                     }
 
                     // Inicializo la palabra oculta con guiones
-                    palabraGuiones = "_ ".repeat(palabraSecreta.length()); // Muestro tantos guiones como letras de la palabra
+                    palabraGuiones = "_ ".repeat(palabraSecreta.length()); // Muestro tantos guiones como letras de la palabra 
                     System.out.println("La palabra secreta tiene " + palabraSecreta.length() + " letras.");
                     System.out.println("La palabra oculta es: " + palabraGuiones);
 
@@ -57,6 +58,7 @@ public class Juego {
 
                     // Empiezo los turnos mediante un while
                     while (intentosRestantes > 0 && !palabraAdivinada) {
+                    	//Muestro el turno y como se veria la palabra en su momento
                         System.out.println("\nTurno de " + jugadores[turnoActual]);
                         System.out.println("Palabra actual: " + palabraActual);
                         System.out.println("Intentos restantes: " + intentosRestantes);
@@ -73,9 +75,10 @@ public class Juego {
                                     nuevaPalabra.setCharAt(i * 2, letra); // Actualizar la letra en la palabra oculta
                                 }
                             }
-                            palabraActual = nuevaPalabra.toString();
+                            palabraActual = nuevaPalabra.toString(); //Actualizo la palabra oculta
                             System.out.println("¡Correcto! La palabra ahora es: " + palabraActual);
                         } else {
+                        	//Si la letra no esta se reduciran los intentos restantes
                             intentosRestantes--;
                             System.out.println("¡Incorrecto! Te quedan " + intentosRestantes + " intentos.");
                         }
@@ -86,7 +89,6 @@ public class Juego {
                             System.out.println("¡Felicidades " + jugadores[turnoActual] + ", has adivinado la palabra!");
                         }
 
-                        // Cambio el turno al siguiente jugador
                         turnoActual = (turnoActual + 1) % numeroDeJugadores; // Ciclo el turno entre jugadores
                     }
 
@@ -99,7 +101,5 @@ public class Juego {
                 System.out.println("Has salido correctamente.");
             }
         } while (option != 2);
-
-        sc.close(); // Cerrar el scanner al final
     }
 }
