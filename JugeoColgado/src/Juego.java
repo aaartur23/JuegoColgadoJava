@@ -13,6 +13,7 @@ public class Juego {
 		String[] jugadores;
 		String palabraGuiones = "";
 		int intentosMax = 6; 
+		int turnoActual = 0;
 		
 		System.out.println("*-------------------------------*");
 		System.out.println("|BIENVENIDO AL JUEGO DEL COLGADO|");
@@ -59,8 +60,50 @@ public class Juego {
         String palabraActual = palabraGuiones;
         boolean palabraAdivinada = false;
         
+        //Empiezo los turnos mediante un while
+        while (intentosRestantes > 0 && !palabraAdivinada) {
+            System.out.println("\nTurno de " + jugadores[turnoActual]);
+            System.out.println("Palabra actual: " + palabraActual);
+            System.out.println("Intentos restantes: " + intentosRestantes);
+            
+            System.out.print("Ingresa una letra: ");
+            char letra = sc.next().toLowerCase().charAt(0);
+            
+            //Verifico si la letra esta en la palabra
+            if (palabraSecreta.contains(String.valueOf(letra))) {
+            	
+            	//Reemplazo la letra por un guion si se encuentra en la palabra
+            	StringBuilder nuevaPalabra = new StringBuilder(palabraActual);
+                 for (int i = 0; i < palabraSecreta.length(); i++) {
+                     if (palabraSecreta.charAt(i) == letra) {
+                         nuevaPalabra.setCharAt(i * 2, letra);
+                     
+            } else {
+            intentosRestantes--;
+            System.out.println("¡Incorrecto! Te quedan " + intentosRestantes + " intentos.");
+        }
+                     //Verifico si se ha acertado la palabra
+                     if (!palabraActual.contains("_")) {
+                         palabraAdivinada = true;
+                         System.out.println("¡Felicidades " + jugadores[turnoActual] + ", has adivinado la palabra!");
+                     }
+                     
+                     turnoActual = (turnoActual + 1) % numeroDeJugadores; //Ciclo el turno entre jugadores
+                     
+        }
+                 //If por si se terminan los intentos y no se ha acertado la palabra
+                 if (!palabraAdivinada) {
+                     System.out.println("Se han agotado los intentos. La palabra secreta era: " + palabraSecreta);
+                 }
+                 
+        palabraActual = nuevaPalabra.toString();
+        System.out.println("¡Correcto! La palabra ahora es: " + palabraActual);
+       
+        
         // Muestro la palabra ingresada
         System.out.println("La palabra secreta es: " + palabraSecreta);
+        }
+        }
         }
 		} else {
 			System.out.println("Has salido correctamente");
