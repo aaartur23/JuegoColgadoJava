@@ -69,13 +69,15 @@ public class Juego {
                         // Verifico si la letra está en la palabra
                         if (palabraSecreta.contains(String.valueOf(letra))) {
                             // Reemplazo la letra por un guion si se encuentra en la palabra
-                            StringBuilder nuevaPalabra = new StringBuilder(palabraActual);
+                            String nuevaPalabra = "";
                             for (int i = 0; i < palabraSecreta.length(); i++) {
                                 if (palabraSecreta.charAt(i) == letra) {
-                                    nuevaPalabra.setCharAt(i * 2, letra); // Actualizar la letra en la palabra oculta
+                                	nuevaPalabra += letra + " "; // Si la letra esta, la agrego                                
+                                }else {
+                                	nuevaPalabra += palabraActual.charAt(i * 2) + " "; // Si no, se queda el guion actual 
                                 }
                             }
-                            palabraActual = nuevaPalabra.toString(); //Actualizo la palabra oculta
+                            palabraActual = nuevaPalabra; //Actualizo la palabra oculta
                             System.out.println("¡Correcto! La palabra ahora es: " + palabraActual);
                         } else {
                         	//Si la letra no esta se reduciran los intentos restantes
